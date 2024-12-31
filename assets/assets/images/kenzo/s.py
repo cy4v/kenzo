@@ -6,6 +6,17 @@ def get_scaled_size(original_size, scale_factor):
     width, height = original_size
     new_width = int(width * scale_factor)
     new_height = int(height * scale_factor)
+
+    scale_factor_plus = 0.1
+
+    while new_width > 400 or new_height > 400:
+        new_width = int(width * (scale_factor - scale_factor_plus))
+        new_height = int(height * (scale_factor - scale_factor_plus))
+        scale_factor_plus += 0.1
+        
+        print(new_width)
+        print(new_height)
+        
     return (new_width, new_height)
 
 def convert_to_webp(input_image_path, output_image_path, scale_factor=0.5, quality=80):
